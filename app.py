@@ -1,23 +1,22 @@
-# test_secret.py
-import streamlit as st, json
-st.title("Secret test")
-try:
-    raw = st.secrets["gcp_service_account"]
-    st.write("type:", type(raw))
-    if isinstance(raw, str):
-        st.write("len:", len(raw))
-        try:
-            parsed = json.loads(raw)
-            st.write("Parsed JSON keys:", list(parsed.keys()))
-        except Exception as e:
-            st.write("json.loads error:", e)
-            s2 = raw.replace('\\n', '\n')
-            try:
-                parsed2 = json.loads(s2)
-                st.write("Parsed after \\n replace keys:", list(parsed2.keys()))
-            except Exception as e2:
-                st.write("second parse error:", e2)
-    else:
-        st.write("dict keys:", list(raw.keys()))
-except Exception as e:
-    st.error("st.secrets error: " + str(e))
+# app.py
+import streamlit as st
+import pandas as pd
+import time
+
+st.title("🚀 Streamlit Test App")
+
+st.write("If you see this, Streamlit Cloud is working ✅")
+
+# Simple counter
+count = st.number_input("Enter a number", min_value=0, max_value=100, value=0)
+st.write("You entered:", count)
+
+# Make a tiny dataframe
+df = pd.DataFrame({"A": [1, 2, 3], "B": [10, 20, 30]})
+st.write("Here is a sample dataframe:")
+st.dataframe(df)
+
+# Simulate progress bar
+with st.spinner("Simulating work..."):
+    time.sleep(2)
+st.success("Done!")
