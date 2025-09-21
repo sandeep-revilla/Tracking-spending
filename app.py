@@ -213,3 +213,6 @@ st.download_button("Download cleaned CSV", data=csv, file_name="transactions_cle
 
 st.markdown("---")
 st.caption("App reads your Google Sheet live whenever the page is loaded or refreshed.")
+
+
+expense-tracking@tracking-spending-472812.iam.gserviceaccount.com
